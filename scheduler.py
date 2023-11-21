@@ -26,8 +26,8 @@ def job():
     asyncio.run(bot.sendMessage(chat_id=public_chat_name, text="schedule"))
     print("current time = ", str(now))
 
-#n분마다 실행
-schedule.every(0.1).minutes.do(job)
+#30분마다 실행
+schedule.every(30).minutes.do(job)
 
 print("Start App")
 
