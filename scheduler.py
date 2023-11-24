@@ -1,40 +1,38 @@
 import sys
 import io
-import schedule
 import datetime
+import pytz
+import schedule
 import time
 import telegram
-import asyncio
-import pytz
 
 count = 1
 
 def job():
-    
     global count
     count += 1
     now = datetime.datetime.now(pytz.timezone('Asia/Seoul'))
     if now.hour >= 23 or now.hour <= 6:
         return
-    
+
     sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
     sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 
-    token = "5965897880:AAHwEJqt5Axjg_TpL3c-fys78nJ7vFRqeF0"
+    token = ""  # 여기에 봇 토큰을 넣으십시오.
     bot = telegram.Bot(token=token)
-    public_chat_name = '@dvnlb2'
-    asyncio.run(bot.sendMessage(chat_id=public_chat_name, text="schedule"))
+    public_chat_name = '@abcde' # 여기에 chat_name을 입략하시오.
+    bot.sendMessage(chat_id=public_chat_name, text="schedule alert")
     print("current time = ", str(now))
 
-#30분마다 실행
+
 schedule.every(30).minutes.do(job)
 
-print("Start App")
+print('Start app')
 
-#파이썬 스케쥴러
 while True:
     schedule.run_pending()
     time.sleep(1)
+
 
 '''
 import schedule
@@ -44,9 +42,9 @@ import telegram
 
 async def job():
     now = time.localtime()
-    token = "5965897880:AAHwEJqt5Axjg_TpL3c-fys78nJ7vFRqeF0"
+    token = ""  # 여기에 봇 토큰을 넣으십시오.
     bot = telegram.Bot(token=token)
-    public_chat_name = '@dvnlb2'
+    public_chat_name = '@abcde' # 여기에 chat_name을 입략하시오.
     await bot.sendMessage(chat_id=public_chat_name, text="hi:)")
     print("current time = ", str(now))
 
