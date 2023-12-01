@@ -1,5 +1,5 @@
 # 🐶 Tele_chat_alarm
-비동기 문제 asyncio로 해결
+비동기 문제 asyncio로 해결<br>
 alarm은 telegram 버전을 다운그레이드해서 해결
 <br><br>
 
